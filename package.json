@@ -1,0 +1,36 @@
+{
+  "name": "electron-traywindow-positioner",
+  "version": "0.0.1",
+  "description": "Positioning of electron BrowserWindows for tray applications",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint . --format=node_modules/eslint-formatter-pretty",
+    "mocha": "mocha test/*.test.js",
+    "prepublish": "npm test",
+    "test": "npm run lint && npm run mocha"
+  },
+  "keywords": [
+    "electron",
+    "traywindow",
+    "position"
+  ],
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/pixtron/electron-traywindow-positioner.git"
+  },
+  "bugs": "https://github.com/pixtron/electron-traywindow-positioner/issues",
+  "author": "Stefan Aebischer <os@pixtron.ch>",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-formatter-pretty": "^1.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "mocha": "^3.5.0",
+    "sinon": "^3.1.0"
+  },
+  "dependencies": {
+    "electron": "^1.7.5"
+  }
+}

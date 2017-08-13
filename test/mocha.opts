@@ -1,0 +1,3 @@
+--bail
+--recursive
+--reporter dot
