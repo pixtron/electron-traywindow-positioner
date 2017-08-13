@@ -21,20 +21,20 @@ const positioner = require('electron-traywindow-positioner');
 positioner.position(trayWindow, trayBounds);
 ```
 
-`trayWindow` must be an instance of a [`BrowserWindow`](https://github.com/electron/electron/blob/master/docs/api/browser-window.md#wingetbounds).
-`trayBounds` must be an instance  of [`Rectangle`](https://github.com/electron/electron/blob/master/docs/api/structures/rectangle.md) returned from [`tray.getBounds()`](https://github.com/electron/electron/blob/master/docs/api/tray.md#traygetbounds-macos-windows)
+* `trayWindow` must be an instance of a [`BrowserWindow`](https://github.com/electron/electron/blob/master/docs/api/browser-window.md#wingetbounds).
+* `trayBounds` must be an instance  of [`Rectangle`](https://github.com/electron/electron/blob/master/docs/api/structures/rectangle.md) returned from [`tray.getBounds()`](https://github.com/electron/electron/blob/master/docs/api/tray.md#traygetbounds-macos-windows)
 
 ### Only calculate the postion without positioning the window
 
 ```
 const positioner = require('electron-traywindow-positioner');
 
-positioner.calculate(trayBounds, trayBounds);
+positioner.calculate(windowBounds, trayBounds);
 
 ```
 
-`windowBounds` must be an instance of [`Rectangle`](https://github.com/electron/electron/blob/master/docs/api/structures/rectangle.md) returned from [`BrowserWindow.getBounds()`]().
-`trayBounds` must be an instance  of [`Rectangle`](https://github.com/electron/electron/blob/master/docs/api/structures/rectangle.md)  returned from [`tray.getBounds()`](https://github.com/electron/electron/blob/master/docs/api/tray.md#traygetbounds-macos-windows)
+* `windowBounds` must be an instance of [`Rectangle`](https://github.com/electron/electron/blob/master/docs/api/structures/rectangle.md) returned from [`BrowserWindow.getBounds()`]().
+* `trayBounds` must be an instance  of [`Rectangle`](https://github.com/electron/electron/blob/master/docs/api/structures/rectangle.md)  returned from [`tray.getBounds()`](https://github.com/electron/electron/blob/master/docs/api/tray.md#traygetbounds-macos-windows)
 
 
 
@@ -49,7 +49,7 @@ positioner.position(trayWindow, trayBounds, alignment);
 
 // or
 
-positioner.calculate(trayBounds, trayBounds, alignment);
+positioner.calculate(windowBounds, trayBounds, alignment);
 ```
 
 * `alignmet.x` alignment on x axis relative to tray icon when tray bar is top or bottom.
