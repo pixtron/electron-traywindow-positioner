@@ -93,20 +93,12 @@ const positioner = {
     const display = this._getDisplay();
     let x;
 
-    function alignLeft() {
-      return trayBounds.x + trayBounds.width - windowBounds.width;
-    }
-
-    function alignRight() {
-      return trayBounds.x;
-    }
-
     switch (align) {
       case 'right':
-        x = alignRight();
+        x = trayBounds.x;
         break;
       case 'left':
-        x = alignLeft();
+        x = trayBounds.x + trayBounds.width - windowBounds.width;
         break;
       case 'center':
       default:
@@ -114,11 +106,11 @@ const positioner = {
     }
 
     if (x + windowBounds.width > display.bounds.width && align !== 'left') {
-      // if window would overlap on right side align it left
-      x = alignLeft();
+      // if window would overlap on right side align it to the end of the screen
+      x = display.bounds.width - windowBounds.width
     } else if (x < 0 && align !== 'right') {
       // if window would overlap on the left side align it right
-      x = alignRight();
+      x = 0;
     }
 
     return x;
@@ -136,30 +128,22 @@ const positioner = {
     const display = this._getDisplay();
     let y;
 
-    function alignUp() {
-      return trayBounds.y + trayBounds.height - windowBounds.height;
-    }
-
-    function alignDown() {
-      return trayBounds.y;
-    }
-
     switch (align) {
       case 'up':
-        y = alignUp();
+        y =  trayBounds.y + trayBounds.height - windowBounds.height;
         break;
       case 'center':
         y = Math.round((trayBounds.y + (trayBounds.height / 2)) - (windowBounds.height / 2));
         break;
       case 'down':
       default:
-        y = alignDown();
+        y = trayBounds.y;
     }
 
     if (y + windowBounds.height > display.bounds.height && align !== 'up') {
-      y = alignUp();
+      y = display.bounds.height - windowBounds.height
     } else if (y < 0 && align !== 'down') {
-      y = alignDown();
+      y = 0;
     }
 
     return y;
