@@ -195,8 +195,9 @@ const positioner = {
     if (this.screen) return this.screen;
 
     // requireing electron.screen here so this dependency can be mocked easily
-    // eslint-disable-next-line global-require
+    /* eslint-disable global-require,import/no-unresolved,import/no-extraneous-dependencies */
     this.screen = require('electron').screen;
+    /* eslint-enable global-require,import/no-unresolved,import/no-extraneous-dependencies */
     return this.screen;
   },
 
