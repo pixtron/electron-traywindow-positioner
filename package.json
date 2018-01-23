@@ -1,6 +1,6 @@
 {
   "name": "electron-traywindow-positioner",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Positioning of electron BrowserWindows for tray applications",
   "main": "index.js",
   "scripts": {
@@ -14,9 +14,9 @@
     "traywindow",
     "position"
   ],
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/pixtron/electron-traywindow-positioner.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pixtron/electron-traywindow-positioner.git"
   },
   "bugs": "https://github.com/pixtron/electron-traywindow-positioner/issues",
   "author": "Stefan Aebischer <os@pixtron.ch>",
