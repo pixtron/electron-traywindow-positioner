@@ -56,4 +56,4 @@ positioner.calculate(windowBounds, trayBounds, alignment);
 The value can be one of `left`, `center` or `right`, default is `center`.
 
 * `alignmet.y` alignment on y axis relative to tray icon when tray bar is left or right.
-The value can be one of `up`, `middle` or `down`, default is `down`.
+The value can be one of `up`, `center` or `down`, default is `down`.
