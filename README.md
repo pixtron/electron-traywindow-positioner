@@ -16,9 +16,9 @@ npm install --save electron-traywindow-positioner
 ## Usage
 
 ```
-const positioner = require('electron-traywindow-positioner');
+const positioner = require('electron-traywindow-positioner')
 
-positioner.position(trayWindow, trayBounds);
+positioner.position(trayWindow, trayBounds)
 ```
 
 * `trayWindow` must be an instance of a [`BrowserWindow`](https://github.com/electron/electron/blob/master/docs/api/browser-window.md#wingetbounds).
@@ -27,9 +27,9 @@ positioner.position(trayWindow, trayBounds);
 ### Only calculate the postion without positioning the window
 
 ```
-const positioner = require('electron-traywindow-positioner');
+const positioner = require('electron-traywindow-positioner')
 
-positioner.calculate(windowBounds, trayBounds);
+positioner.calculate(windowBounds, trayBounds)
 
 ```
 
@@ -41,15 +41,15 @@ positioner.calculate(windowBounds, trayBounds);
 ### Custom alignment
 
 ```
-const alignment = {x: 'left', y: 'up'};
+const alignment = {x: 'left', y: 'up'}
 
-const positioner = require('electron-traywindow-positioner');
+const positioner = require('electron-traywindow-positioner')
 
-positioner.position(trayWindow, trayBounds, alignment);
+positioner.position(trayWindow, trayBounds, alignment, edge)
 
 // or
 
-positioner.calculate(windowBounds, trayBounds, alignment);
+positioner.calculate(windowBounds, trayBounds, alignment, edge)
 ```
 
 * `alignmet.x` alignment on x axis relative to tray icon when tray bar is top or bottom.
@@ -57,3 +57,6 @@ The value can be one of `left`, `center` or `right`, default is `center`.
 
 * `alignmet.y` alignment on y axis relative to tray icon when tray bar is left or right.
 The value can be one of `up`, `center` or `down`, default is `down`.
+
+* `edge` tells positioner to align the window to the edge of the screen when it overlaps
+the screen. By default it is `false` so it just just aligns to the opposite side.
