@@ -207,13 +207,13 @@ const positioner = {
   },
 
   /**
-   * Get the display nearest the current cursor position
+   * Get the primary display
    *
-   * @return {Electron.Display} - the display closest to the current cursor position
+   * @return {Electron.Display} - the primary display
    */
   _getDisplay() {
     const screen = this._getScreen();
-    return screen.getDisplayNearestPoint(screen.getCursorScreenPoint());
+    return screen.getPrimaryDisplay();
   },
 };
 
