@@ -31,9 +31,9 @@ const positioner = {
    * @return {Point} - Calculated point {x, y} where the window should be positioned
    */
   calculate(windowBounds, trayBounds, alignment) {
-    if (process.platform === 'linux') {
+    if (this._getPlatform() === 'linux') {
       const cursor = this._getCursorPosition();
-      return this._calculateByCursorPosition(windowBounds, this._getDisplay(), cursor);
+      return this._calculateByCursorPosition(windowBounds, this._getDisplay(), cursor, alignment);
     }
 
     const _alignment = alignment || {};
@@ -174,9 +174,36 @@ const positioner = {
    * @param {Point} cursor - current cursor position
    * @return {Point} - Calculated point {x, y} where the window should be positioned
    */
-  _calculateByCursorPosition(windowBounds, display, cursor) {
+  _calculateByCursorPosition(windowBounds, display, cursor, alignment) {
     let x = cursor.x;
     let y = cursor.y;
+
+    const _alignment = alignment || {};
+    switch (_alignment.y) {
+      case 'top':
+      default:
+        // do nothing
+    }
+    switch (_alignment.x) {
+      case 'left':
+        x = Math.round(x - windowBounds.width);
+        break;
+      case 'right':
+        // do nothing
+        break;
+      case 'center':
+      default:
+        x = Math.round(x - windowBounds.width / 2);
+        break;
+    }
+    switch (_alignment.y) {
+      case 'top':
+        y = Math.round(y - windowBounds.height);
+        break;
+      case 'bottom':
+      default:
+        // do nothing
+    }
 
     if (x + windowBounds.width > display.bounds.width) {
       // if window would overlap on right side of screen, align it to the left of the cursor
@@ -189,6 +216,10 @@ const positioner = {
     }
 
     return { x, y };
+  },
+
+  _getPlatform() {
+    return process.platform;
   },
 
   _getScreen() {
