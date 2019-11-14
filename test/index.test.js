@@ -4,21 +4,22 @@ const sinon = require('sinon');
 const positioner = require('../index.js');
 
 const BrowserWindowMock = require('./mocks/electron/BrowserWindow.js');
+const ScreenMock = require('./mocks/electron/ScreenMock.js');
 const displayFactory = require('./mocks/electron/displayFactory.js');
 
 const sandbox = sinon.createSandbox();
 
-let getDisplayStub;
-
-beforeEach(() => {
-  getDisplayStub = sandbox.stub(positioner, '_getDisplay').returns(displayFactory('bottom'));
-});
-
-afterEach(() => {
-  sandbox.restore();
-});
-
 describe('positioner', () => {
+  let getDisplayStub;
+
+  beforeEach(() => {
+    getDisplayStub = sandbox.stub(positioner, '_getDisplay').returns(displayFactory('bottom'));
+  });
+
+  afterEach(() => {
+    sandbox.restore();
+  });
+
   describe('.getTaskbarPosition', () => {
     it('should return top if taskbar is on top', () => {
       getDisplayStub.returns(displayFactory('top'));
@@ -376,5 +377,23 @@ describe('positioner', () => {
       assert(trayWindow.setPosition.calledOnce);
       assert(trayWindow.setPosition.calledWith(1150, 23, false));
     });
+  });
+});
+
+describe('positioner._getDisplay', () => {
+  afterEach(() => {
+    sandbox.restore();
+  });
+
+  it('should call screen.getDisplayNearestPoint with x/y Point from trayBounds', () => {
+    const screen = sinon.createStubInstance(ScreenMock);
+    const trayBounds = { x: 1240, y: 5, width: 20, height: 20 };
+
+    sandbox.stub(positioner, '_getScreen').returns(screen);
+
+    sandbox.spy(screen.getDisplayNearestPoint);
+    positioner._getDisplay(trayBounds);
+    assert(screen.getDisplayNearestPoint.calledOnce);
+    assert(screen.getDisplayNearestPoint.calledWith({ x: 1240, y: 5 }));
   });
 });
