@@ -113,10 +113,10 @@ const positioner = {
         x = Math.round(trayBounds.x + (trayBounds.width / 2) - (windowBounds.width / 2));
     }
 
-    if (x + windowBounds.width > display.bounds.width && align !== 'left') {
+    if ((x + windowBounds.width) > (display.bounds.width + display.bounds.x) && align !== 'left') {
       // if window would overlap on right side align it left
       x = alignLeft();
-    } else if (x < 0 && align !== 'right') {
+    } else if (x < display.bounds.x && align !== 'right') {
       // if window would overlap on the left side align it right
       x = alignRight();
     }

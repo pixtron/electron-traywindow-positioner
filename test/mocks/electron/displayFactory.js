@@ -1,28 +1,60 @@
 
-const displayFactory = function (taskbarPosition) {
+const displayFactory = function (taskbarPosition = 'top', screenId = 'primary') {
+  const taskbarSize = 23;
+
+  let bounds;
+  let workArea;
+
+  switch (screenId) {
+    case 'sec-left':
+      bounds = { x: -1440, y: 0, width: 1440, height: 900 };
+      break;
+    case 'sec-right':
+      bounds = { x: 1440, y: 0, width: 1440, height: 900 };
+      break;
+    case 'primary':
+    default:
+      bounds = { x: 0, y: 0, width: 1440, height: 900 };
+      break;
+  }
+
   switch (taskbarPosition) {
     case 'left':
-      return {
-        bounds: { x: 0, y: 0, width: 1440, height: 900 },
-        workArea: { x: 23, y: 0, width: 1417, height: 900 },
+      workArea = {
+        x: bounds.x + taskbarSize,
+        y: 0,
+        width: bounds.width - taskbarSize,
+        height: bounds.height,
       };
+      break;
     case 'right':
-      return {
-        bounds: { x: 0, y: 0, width: 1440, height: 900 },
-        workArea: { x: 0, y: 0, width: 1417, height: 900 },
+      workArea = {
+        x: 0,
+        y: 0,
+        width: bounds.width - taskbarSize,
+        height: bounds.height,
       };
+      break;
     case 'bottom':
-      return {
-        bounds: { x: 0, y: 0, width: 1440, height: 900 },
-        workArea: { x: 0, y: 0, width: 1440, height: 877 },
+      workArea = {
+        x: 0,
+        y: 0,
+        width: bounds.width,
+        height: bounds.height - taskbarSize,
       };
+      break;
     case 'top':
     default:
-      return {
-        bounds: { x: 0, y: 0, width: 1440, height: 900 },
-        workArea: { x: 0, y: 23, width: 1440, height: 877 },
+      workArea = {
+        x: 0,
+        y: bounds.y + taskbarSize,
+        width: bounds.width,
+        height: bounds.height - taskbarSize,
       };
+      break;
   }
+
+  return { bounds, workArea };
 };
 
 module.exports = displayFactory;

@@ -129,6 +129,28 @@ describe('positioner', () => {
       assert.equal(result, 1150);
     });
 
+    it('should calculate the correct alignment if alignment is center on a screen left to secondary', () => {
+      getDisplayStub.returns(displayFactory('top', 'sec-left'));
+
+      const trayWindowBounds = { x: 0, y: 0, width: 200, height: 100 };
+      const trayBounds = { x: -200, y: 0, width: 20, height: 20 };
+
+      const result = positioner._calculateXAlign(trayWindowBounds, trayBounds, 'center');
+
+      assert.equal(result, -290);
+    });
+
+    it('should calculate the correct alignment if alignment is center on a screen right to secondary', () => {
+      getDisplayStub.returns(displayFactory('top', 'sec-right'));
+
+      const trayWindowBounds = { x: 0, y: 0, width: 200, height: 100 };
+      const trayBounds = { x: 2680, y: 0, width: 20, height: 20 };
+
+      const result = positioner._calculateXAlign(trayWindowBounds, trayBounds, 'center');
+
+      assert.equal(result, 2590);
+    });
+
     it('should calculate the correct alignment if alignment is left', () => {
       getDisplayStub.returns(displayFactory('top'));
 
@@ -138,6 +160,28 @@ describe('positioner', () => {
       const result = positioner._calculateXAlign(trayWindowBounds, trayBounds, 'left');
 
       assert.equal(result, 1060);
+    });
+
+    it('should calculate the correct alignment if alignment is left on a screen left to secondary', () => {
+      getDisplayStub.returns(displayFactory('top', 'sec-left'));
+
+      const trayWindowBounds = { x: 0, y: 0, width: 200, height: 100 };
+      const trayBounds = { x: -200, y: 0, width: 20, height: 20 };
+
+      const result = positioner._calculateXAlign(trayWindowBounds, trayBounds, 'left');
+
+      assert.equal(result, -380);
+    });
+
+    it('should calculate the correct alignment if alignment is left on a screen right to secondary', () => {
+      getDisplayStub.returns(displayFactory('top', 'sec-right'));
+
+      const trayWindowBounds = { x: 0, y: 0, width: 200, height: 100 };
+      const trayBounds = { x: 2680, y: 0, width: 20, height: 20 };
+
+      const result = positioner._calculateXAlign(trayWindowBounds, trayBounds, 'left');
+
+      assert.equal(result, 2500);
     });
 
     it('should calculate the correct alignment if alignment is right', () => {
@@ -151,6 +195,28 @@ describe('positioner', () => {
       assert.equal(result, 1240);
     });
 
+    it('should calculate the correct alignment if alignment is right on a screen left to secondary', () => {
+      getDisplayStub.returns(displayFactory('top', 'sec-left'));
+
+      const trayWindowBounds = { x: 0, y: 0, width: 200, height: 100 };
+      const trayBounds = { x: -200, y: 0, width: 20, height: 20 };
+
+      const result = positioner._calculateXAlign(trayWindowBounds, trayBounds, 'right');
+
+      assert.equal(result, -200);
+    });
+
+    it('should calculate the correct alignment if alignment is right on a screen right to secondary', () => {
+      getDisplayStub.returns(displayFactory('top', 'sec-right'));
+
+      const trayWindowBounds = { x: 0, y: 0, width: 200, height: 100 };
+      const trayBounds = { x: 2680, y: 0, width: 20, height: 20 };
+
+      const result = positioner._calculateXAlign(trayWindowBounds, trayBounds, 'right');
+
+      assert.equal(result, 2680);
+    });
+
     it('should not calculate a position where window overlaps on right', () => {
       getDisplayStub.returns(displayFactory('top'));
 
@@ -162,6 +228,28 @@ describe('positioner', () => {
       assert.equal(result, 960);
     });
 
+    it('should not calculate a position where window overlaps on right on a screen left to secondary', () => {
+      getDisplayStub.returns(displayFactory('top', 'sec-left'));
+
+      const trayWindowBounds = { x: 0, y: 0, width: 300, height: 100 };
+      const trayBounds = { x: -200, y: 0, width: 20, height: 20 };
+
+      const result = positioner._calculateXAlign(trayWindowBounds, trayBounds, 'right');
+
+      assert.equal(result, -480);
+    });
+
+    it('should not calculate a position where window overlaps on right on a screen right to secondary', () => {
+      getDisplayStub.returns(displayFactory('top', 'sec-right'));
+
+      const trayWindowBounds = { x: 0, y: 0, width: 300, height: 100 };
+      const trayBounds = { x: 2680, y: 0, width: 20, height: 20 };
+
+      const result = positioner._calculateXAlign(trayWindowBounds, trayBounds, 'right');
+
+      assert.equal(result, 2400);
+    });
+
     it('should not calculate a position where window overlaps on left', () => {
       getDisplayStub.returns(displayFactory('top'));
 
@@ -171,6 +259,28 @@ describe('positioner', () => {
       const result = positioner._calculateXAlign(trayWindowBounds, trayBounds, 'left');
 
       assert.equal(result, 20);
+    });
+
+    it('should not calculate a position where window overlaps on left on a screen left to secondary', () => {
+      getDisplayStub.returns(displayFactory('top', 'sec-left'));
+
+      const trayWindowBounds = { x: 0, y: 0, width: 200, height: 100 };
+      const trayBounds = { x: -1420, y: 0, width: 20, height: 20 };
+
+      const result = positioner._calculateXAlign(trayWindowBounds, trayBounds, 'left');
+
+      assert.equal(result, -1420);
+    });
+
+    it('should not calculate a position where window overlaps on left on a screen right to secondary', () => {
+      getDisplayStub.returns(displayFactory('top', 'sec-right'));
+
+      const trayWindowBounds = { x: 0, y: 0, width: 200, height: 100 };
+      const trayBounds = { x: 1460, y: 0, width: 20, height: 20 };
+
+      const result = positioner._calculateXAlign(trayWindowBounds, trayBounds, 'left');
+
+      assert.equal(result, 1460);
     });
   });
 
