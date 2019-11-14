@@ -9,5 +9,8 @@
     "no-underscore-dangle": 0,
     "no-mixed-operators": 0,
     "func-names": 0
-  }
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
 }
