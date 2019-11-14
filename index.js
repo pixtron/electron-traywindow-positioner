@@ -7,9 +7,9 @@ const positioner = {
   getTaskbarPosition() {
     const display = this._getDisplay();
 
-    if (display.workArea.y > 0) {
+    if (display.workArea.y > display.bounds.y) {
       return 'top';
-    } else if (display.workArea.x > 0) {
+    } else if (display.workArea.x > display.bounds.x) {
       return 'left';
     } else if (display.workArea.width === display.bounds.width) {
       return 'bottom';

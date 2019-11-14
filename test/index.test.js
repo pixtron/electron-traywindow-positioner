@@ -47,6 +47,26 @@ describe('positioner', () => {
       const result = positioner.getTaskbarPosition();
       assert.equal(result, 'right');
     });
+
+    it('should return top if taskbar is at top on a secondary screen above primary screen', () => {
+      getDisplayStub.returns({
+        bounds: { x: 0, y: -768, width: 1024, height: 768 },
+        workArea: { x: 0, y: -745, width: 1024, height: 745 },
+      });
+
+      const result = positioner.getTaskbarPosition();
+      assert.equal(result, 'top');
+    });
+
+    it('should return top if taskbar is at top on a secondary screen right of and slightly above primary screen', () => {
+      getDisplayStub.returns({
+        bounds: { x: 1024, y: -73, width: 1024, height: 768 },
+        workArea: { x: 1024, y: -50, width: 1024, height: 745 },
+      });
+
+      const result = positioner.getTaskbarPosition();
+      assert.equal(result, 'top');
+    });
   });
 
   describe('.calculate', () => {
