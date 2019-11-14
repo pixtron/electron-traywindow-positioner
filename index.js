@@ -2,10 +2,11 @@ const positioner = {
   /**
    * Calculates the position of the tray window
    *
+   * @param {Rectangle} trayBounds - tray bounds from electron Tray
    * @return {string} - the position of the taskbar (top|right|bottom|left)
    */
-  getTaskbarPosition() {
-    const display = this._getDisplay();
+  getTaskbarPosition(trayBounds) {
+    const display = this._getDisplay(trayBounds);
 
     if (display.workArea.y > display.bounds.y) {
       return 'top';
@@ -33,12 +34,13 @@ const positioner = {
   calculate(windowBounds, trayBounds, alignment) {
     if (process.platform === 'linux') {
       const cursor = this._getCursorPosition();
-      return this._calculateByCursorPosition(windowBounds, this._getDisplay(), cursor);
+      const bounds = { width: 0, height: 0, ...cursor };
+      return this._calculateByCursorPosition(windowBounds, this._getDisplay(bounds), cursor);
     }
 
     const _alignment = alignment || {};
-    const taskbarPosition = this.getTaskbarPosition();
-    const display = this._getDisplay();
+    const taskbarPosition = this.getTaskbarPosition(trayBounds);
+    const display = this._getDisplay(trayBounds);
     let x;
     let y;
 
@@ -90,7 +92,7 @@ const positioner = {
    * @return {integer} - calculated x position
    */
   _calculateXAlign(windowBounds, trayBounds, align) {
-    const display = this._getDisplay();
+    const display = this._getDisplay(trayBounds);
     let x;
 
     function alignLeft() {
@@ -133,7 +135,7 @@ const positioner = {
    * @return {integer} - calculated y position
    */
   _calculateYAlign(windowBounds, trayBounds, align) {
-    const display = this._getDisplay();
+    const display = this._getDisplay(trayBounds);
     let y;
 
     function alignUp() {
@@ -209,11 +211,12 @@ const positioner = {
   /**
    * Get the display nearest the current cursor position
    *
+   * @param {Rectangle} trayBounds - tray bounds from electron Tray
    * @return {Electron.Display} - the display closest to the current cursor position
    */
-  _getDisplay() {
+  _getDisplay(trayBounds) {
     const screen = this._getScreen();
-    return screen.getDisplayNearestPoint(screen.getCursorScreenPoint());
+    return screen.getDisplayNearestPoint((({ x, y }) => ({ x, y }))(trayBounds));
   },
 };
 
