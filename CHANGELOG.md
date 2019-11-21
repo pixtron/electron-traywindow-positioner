@@ -4,6 +4,7 @@
 
 * [FIX] Fixes taskbar position on secondary screens #9
 * [FIX] Fixes x-alignment on secondary screens #7
+* [CHANGE] Custom alignment for linux #5
 
 ## 0.0.2
 **Maintainer**: pixtron <os@pixtron.ch>\
