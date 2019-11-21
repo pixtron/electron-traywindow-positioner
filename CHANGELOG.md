@@ -1,6 +1,6 @@
 ## 1.1.0
 **Maintainer**: pixtron <os@pixtron.ch>\
-**Date**: 
+**Date**: Thu Nov 21 2019 15:10:44 GMT-0300
 
 * [FIX] Tray window sometimes appears out of place on windows #8
 * [CHANGE] Custom alignment for linux #5
