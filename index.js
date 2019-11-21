@@ -32,7 +32,7 @@ const positioner = {
    * @return {Point} - Calculated point {x, y} where the window should be positioned
    */
   calculate(windowBounds, trayBounds, alignment) {
-    if (process.platform === 'linux') {
+    if (this._getPlatform() === 'linux') {
       const cursor = this._getCursorPosition();
       const bounds = { width: 0, height: 0, ...cursor };
       return this._calculateByCursorPosition(windowBounds, this._getDisplay(bounds), cursor);
@@ -191,6 +191,15 @@ const positioner = {
     }
 
     return { x, y };
+  },
+
+  /**
+   * Returns `process.platform`
+   *
+   * @return {string} - the platform electron is running on
+   */
+  _getPlatform() {
+    return process.platform;
   },
 
   _getScreen() {

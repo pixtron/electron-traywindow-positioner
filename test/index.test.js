@@ -11,9 +11,11 @@ const sandbox = sinon.createSandbox();
 
 describe('positioner', () => {
   let getDisplayStub;
+  let getPlatformStub; // eslint-disable-line no-unused-vars
 
   beforeEach(() => {
     getDisplayStub = sandbox.stub(positioner, '_getDisplay').returns(displayFactory('bottom'));
+    getPlatformStub = sandbox.stub(positioner, '_getPlatform').returns('darwin');
   });
 
   afterEach(() => {
