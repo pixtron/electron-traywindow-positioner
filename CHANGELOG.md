@@ -1,10 +1,18 @@
+## 1.1.0
+**Maintainer**: pixtron <os@pixtron.ch>\
+**Date**: 
+
+* [FIX] Tray window sometimes appears out of place on windows #8
+* [CHANGE] Custom alignment for linux #5
+
+
 ## 0.0.3
 **Maintainer**: pixtron <os@pixtron.ch>\
 **Date**: Thu Nov 14 2019 13:28:30 GMT-0300
 
 * [FIX] Fixes taskbar position on secondary screens #9
 * [FIX] Fixes x-alignment on secondary screens #7
-* [CHANGE] Custom alignment for linux #5
+
 
 ## 0.0.2
 **Maintainer**: pixtron <os@pixtron.ch>\
