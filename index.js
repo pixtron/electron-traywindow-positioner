@@ -32,34 +32,35 @@ const positioner = {
    * @return {Point} - Calculated point {x, y} where the window should be positioned
    */
   calculate(windowBounds, trayBounds, alignment) {
+    let tb;
     if (this._getPlatform() === 'linux') {
-      const cursor = this._getCursorPosition();
-      const bounds = { width: 0, height: 0, ...cursor };
-      return this._calculateByCursorPosition(windowBounds, this._getDisplay(bounds), cursor);
+      tb = { width: 0, height: 0, ...this._getCursorPosition() };
+    } else {
+      tb = trayBounds;
     }
 
     const _alignment = alignment || {};
-    const taskbarPosition = this.getTaskbarPosition(trayBounds);
-    const display = this._getDisplay(trayBounds);
+    const taskbarPosition = this.getTaskbarPosition(tb);
+    const display = this._getDisplay(tb);
     let x;
     let y;
 
     switch (taskbarPosition) {
       case 'left':
         x = display.workArea.x;
-        y = this._calculateYAlign(windowBounds, trayBounds, _alignment.y);
+        y = this._calculateYAlign(windowBounds, tb, _alignment.y);
         break;
       case 'right':
         x = display.workArea.width - windowBounds.width;
-        y = this._calculateYAlign(windowBounds, trayBounds, _alignment.y);
+        y = this._calculateYAlign(windowBounds, tb, _alignment.y);
         break;
       case 'bottom':
-        x = this._calculateXAlign(windowBounds, trayBounds, _alignment.x);
+        x = this._calculateXAlign(windowBounds, tb, _alignment.x);
         y = display.workArea.height - windowBounds.height;
         break;
       case 'top':
       default:
-        x = this._calculateXAlign(windowBounds, trayBounds, _alignment.x);
+        x = this._calculateXAlign(windowBounds, tb, _alignment.x);
         y = display.workArea.y;
     }
 
