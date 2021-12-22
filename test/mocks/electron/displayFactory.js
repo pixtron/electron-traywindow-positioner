@@ -1,4 +1,3 @@
-
 const displayFactory = function (taskbarPosition = 'top', screenId = 'primary') {
   const taskbarSize = 23;
 

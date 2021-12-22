@@ -10,9 +10,13 @@ const positioner = {
 
     if (display.workArea.y > display.bounds.y) {
       return 'top';
-    } else if (display.workArea.x > display.bounds.x) {
+    }
+
+    if (display.workArea.x > display.bounds.x) {
       return 'left';
-    } else if (display.workArea.width === display.bounds.width) {
+    }
+
+    if (display.workArea.width === display.bounds.width) {
       return 'bottom';
     }
 
@@ -178,8 +182,8 @@ const positioner = {
    * @return {Point} - Calculated point {x, y} where the window should be positioned
    */
   _calculateByCursorPosition(windowBounds, display, cursor) {
-    let x = cursor.x;
-    let y = cursor.y;
+    // TODO pixtron - this method seems to not be used anymore
+    let { x, y } = cursor;
 
     if (x + windowBounds.width > display.bounds.width) {
       // if window would overlap on right side of screen, align it to the left of the cursor
