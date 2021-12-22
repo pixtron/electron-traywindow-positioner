@@ -1,4 +1,5 @@
 {
+  "root": true,
   "extends": "airbnb-base",
   "plugins": [
   ],
@@ -8,9 +9,16 @@
   "rules": {
     "no-underscore-dangle": 0,
     "no-mixed-operators": 0,
-    "func-names": 0
+    "func-names": 0,
+    "import/extensions": 0,
+    "object-curly-newline": ["error", {
+      ObjectExpression: { "minProperties": 5, "multiline": true, "consistent": true },
+      ObjectPattern: { minProperties: 5, multiline: true, "consistent": true },
+      ImportDeclaration: { "minProperties": 4, "multiline": true, "consistent": true },
+      ExportDeclaration: { "minProperties": 4, "multiline": true, "consistent": true },
+    }]
   },
   "parserOptions": {
     "ecmaVersion": 2018
-  },
+  }
 }
