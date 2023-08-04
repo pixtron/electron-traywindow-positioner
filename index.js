@@ -173,32 +173,6 @@ const positioner = {
   },
 
   /**
-   * Calculates the position of the tray window based on current cursor position
-   * This method is used on linux where trayBounds are not available
-   *
-   * @param {Rectangle} windowBounds - electron BrowserWindow bounds of tray window to position
-   * @param {Eelectron.Display} display - display on which the cursor is currently
-   * @param {Point} cursor - current cursor position
-   * @return {Point} - Calculated point {x, y} where the window should be positioned
-   */
-  _calculateByCursorPosition(windowBounds, display, cursor) {
-    // TODO pixtron - this method seems to not be used anymore
-    let { x, y } = cursor;
-
-    if (x + windowBounds.width > display.bounds.width) {
-      // if window would overlap on right side of screen, align it to the left of the cursor
-      x -= windowBounds.width;
-    }
-
-    if (y + windowBounds.height > display.bounds.height) {
-      // if window would overlap at bottom of screen, align it up from cursor position
-      y -= windowBounds.height;
-    }
-
-    return { x, y };
-  },
-
-  /**
    * Returns `process.platform`
    *
    * @return {string} - the platform electron is running on
