@@ -1,6 +1,6 @@
 {
   "name": "electron-traywindow-positioner",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Positioning of electron BrowserWindows for tray applications",
   "main": "index.js",
   "scripts": {
