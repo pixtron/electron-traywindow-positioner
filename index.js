@@ -31,7 +31,7 @@ const positioner = {
    * @param {Object} [alignment] - alignment of window to tray
    * @param {string} [alignment.x] - x align if tray bar is on top or bottom (left|center|right),
       default: center
-   * @param {string} [alignment.y] - y align if tray bar is left or right (up|middle|down),
+   * @param {string} [alignment.y] - y align if tray bar is left or right (up|center|down),
       default: down
    * @return {Point} - Calculated point {x, y} where the window should be positioned
    */
@@ -79,7 +79,7 @@ const positioner = {
    * @param {Object} [alignment] - alignment of window to tray
    * @param {string} [alignment.x] - x align if tray bar is on top or bottom (left|center|right),
       default: center
-   * @param {string} [alignment.y] - y align if tray bar is left or right (up|middle|down),
+   * @param {string} [alignment.y] - y align if tray bar is left or right (up|center|down),
       default: down
    * @return {Void}
    */
@@ -136,7 +136,7 @@ const positioner = {
    *
    * @param {Rectangle} windowBounds - electron BrowserWindow bounds
    * @param {Rectangle} trayBounds - tray bounds from electron Tray.getBounds()
-   * @param {string} [align] - align up|middle|down, default: down
+   * @param {string} [align] - align up|center|down, default: down
    * @return {integer} - calculated y position
    */
   _calculateYAlign(windowBounds, trayBounds, align) {
