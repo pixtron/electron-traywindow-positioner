@@ -1,9 +1,18 @@
+## 1.2.0
+**Maintainer**: pixtron <os@pixtron.ch>\
+**Date**: Sat Aug 5 01:05:49 2023 +0200
+
+* [FEAT] Add typescript declarations
+* [CHORE] REmove unused method
+
+
 ## 1.1.2
 **Maintainer**: pixtron <os@pixtron.ch>\
 **Date**: Sat Aug 5 00:39:30 2023 +0200
 
 * [DOCS] Correct docs y align middle to center
 * [CHORE] Update dev dependencies
+
 
 ## 1.1.1
 **Maintainer**: pixtron <os@pixtron.ch>\
