@@ -1,3 +1,18 @@
+## 1.1.2
+**Maintainer**: pixtron <os@pixtron.ch>\
+**Date**: Sat Aug 5 00:39:30 2023 +0200
+
+* [DOCS] Correct docs y align middle to center
+* [CHORE] Update dev dependencies
+
+## 1.1.1
+**Maintainer**: pixtron <os@pixtron.ch>\
+**Date**: Wed Dec 22 22:23:32 2021 +0100
+
+* [CHORE] Fix lint errors
+* [CHORE] Update dev dependencies
+
+
 ## 1.1.0
 **Maintainer**: pixtron <os@pixtron.ch>\
 **Date**: Thu Nov 21 2019 15:10:44 GMT-0300
