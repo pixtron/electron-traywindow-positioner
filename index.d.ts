@@ -1,11 +1,11 @@
 import { BrowserWindow, Point, Rectangle } from "electron";
 // x align if tray bar is on top or bottom (default: center)
-type AlignX = "left" | "center" | "right";
+export type AlignX = "left" | "center" | "right";
 
 // y align if tray bar is left or right (default: down)
-type AlignY = "up" | "center" | "down";
+export type AlignY = "up" | "center" | "down";
 
-type Alignment = {
+export type Alignment = {
     x: AlignX;
     y: AlignY;
 };
